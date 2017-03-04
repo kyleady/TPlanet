@@ -1,0 +1,15 @@
+{
+  "name": "tplanet",
+  "version": "0.0.0",
+  "description": "A bare bones GUI for torbenm's planet generator.",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "electron ."
+  },
+  "author": "kyledavidady@gmail.com",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^1.6.1"
+  }
+}

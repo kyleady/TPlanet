@@ -1,0 +1,136 @@
+  <!DOCTYPE html>
+<html>
+  <head>
+    <style>
+    #numberfields {
+      width: 200px;
+      float: left;
+    }
+    #optionfields {
+      width: 200px;
+      float: right;
+      padding-left: 20px;
+    }
+    #preview {
+      overflow: hidden;
+    }
+    .title {
+      padding-top: 5px;
+    }
+    .checkbox {
+      padding-top: 5px;
+    }
+    .combobox {
+      padding-top: 20px;
+    }
+    .button {
+      padding-top: 20px;
+    }
+    select {
+      width: 100%;
+    }
+    button {
+      width: 100%;
+    }
+
+    </style>
+    <meta charset="UTF-8">
+    <title>Torbenm's Planet Generator</title>
+  </head>
+  <body>
+    <div class="display" id="numberfields">
+      <form>
+        <div class="input title">Width</div>
+        <input class="textinput" type="text" name="width" value="800">
+        <div class="input title">Height</div>
+        <input class="textinput" type="text" name="height" value="600">
+        <div class="input title">Magnification</div>
+        <input class="textinput" type="text" name="magnification" value="1.0">
+        <div class="input title">Center Point's Longitude</div>
+        <input class="textinput" type="text" name="longitude" value="0.0">
+        <div class="input title">Center Point's Latitude</div>
+        <input class="textinput" type="text" name="latitude" value="0.0">
+        <div class="input title">Vertical Gridsize</div>
+        <input class="textinput" type="text" name="vgrid" value="0.0">
+        <div class="input title">Horizontal Gridsize</div>
+        <input class="textinput" type="text" name="hgrid" value="0.0">
+        <div class="input title">Water Level</div>
+        <input class="textinput" type="text" name="water" value="-0.02">
+        <div class="input title">Light Source Longitude</div>
+        <input class="textinput" type="text" name="lslongitude" value="0.0">
+        <div class="input title">Light Source Latitude</div>
+        <input class="textinput" type="text" name="lslatitude" value="0.0">
+        <div class="input title">Distance Variation</div>
+        <input class="textinput" type="text" name="dvariation" value="0.035">
+        <div class="input title">Altitude Variation</div>
+        <input class="textinput" type="text" name="avariation" value="-0.45">
+        <div class="input title">Longitude Rotation</div>
+        <input class="textinput" type="text" name="longituder" value="0.0">
+        <div class="input title">Latitude Rotation</div>
+        <input class="textinput" type="text" name="latituder"  value="0.0">
+      </form>
+    </div>
+
+    <div class="display" id="optionfields">
+      <form>
+        <div class = "checkbox">
+          <input type="checkbox" name="colorbyaltitude">
+          Color By Altitude
+        </div>
+        <div class = "checkbox">
+          <input type="checkbox" name="flattershores">
+          Flatter Shores
+        </div>
+        <div class = "checkbox">
+          <input type="checkbox" name="wrinklymap">
+          Wrinkly Map
+        </div>
+        <div class = "checkbox">
+          <input type="checkbox" name="daylightshading">
+          Daylight Shading
+        </div>
+      </form>
+
+      <div class="combobox title">Outline</div>
+      <select>
+        <option value="">-</option>
+        <option value="-E">Outline Landmasses</option>
+        <option value="-O">Only Show Outline</option>
+      </select>
+
+      <div class="combobox title">Bumpmap</div>
+      <select>
+        <option value="">-</option>
+        <option value="-b">Land Only</option>
+        <option value="-B">Land and Water</option>
+      </select>
+
+      <div class="combobox title">Projection</div>
+      <select>
+        <option value="m">Mercator</option>
+        <option value="p">Peters</option>
+        <option value="q">Square</option>
+        <option value="s">Stereographic</option>
+        <option value="o">Orthographic</option>
+        <option value="g">Gnomonic</option>
+        <option value="a">Area Preserving Azimuthal</option>
+        <option value="c">Conical</option>
+        <option value="M">Mollweide</option>
+        <option value="S">Sinusoidal</option>
+        <option value="i">Icosahedral</option>
+      </select>
+
+      <div class="button">
+        <button type="button">New Planet</button>
+      </div>
+      <div class="button">
+        <button type="button">Generate Planet</button>
+      </div>
+    </div>
+
+    <div class="display" id="preview">
+      <img src="p.bmp" id="map" style="width: 100%">
+    </div>
+
+  </body>
+</html>
