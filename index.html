@@ -40,73 +40,73 @@
   <body>
     <div class="display" id="numberfields">
       <form>
-        <div class="input title">Width</div>
-        <input class="textinput" type="text" name="width" value="800">
-        <div class="input title">Height</div>
-        <input class="textinput" type="text" name="height" value="600">
-        <div class="input title">Magnification</div>
-        <input class="textinput" type="text" name="magnification" value="1.0">
-        <div class="input title">Center Point's Longitude</div>
-        <input class="textinput" type="text" name="longitude" value="0.0">
-        <div class="input title">Center Point's Latitude</div>
-        <input class="textinput" type="text" name="latitude" value="0.0">
-        <div class="input title">Vertical Gridsize</div>
-        <input class="textinput" type="text" name="vgrid" value="0.0">
-        <div class="input title">Horizontal Gridsize</div>
-        <input class="textinput" type="text" name="hgrid" value="0.0">
-        <div class="input title">Water Level</div>
-        <input class="textinput" type="text" name="water" value="-0.02">
-        <div class="input title">Light Source Longitude</div>
-        <input class="textinput" type="text" name="lslongitude" value="0.0">
-        <div class="input title">Light Source Latitude</div>
-        <input class="textinput" type="text" name="lslatitude" value="0.0">
-        <div class="input title">Distance Variation</div>
-        <input class="textinput" type="text" name="dvariation" value="0.035">
-        <div class="input title">Altitude Variation</div>
-        <input class="textinput" type="text" name="avariation" value="-0.45">
-        <div class="input title">Longitude Rotation</div>
-        <input class="textinput" type="text" name="longituder" value="0.0">
-        <div class="input title">Latitude Rotation</div>
-        <input class="textinput" type="text" name="latituder"  value="0.0">
+        <div class="title">Width</div>
+        <input class="text" type="text" id="width" value="800">
+        <div class="title">Height</div>
+        <input class="text" type="text" id="height" value="600">
+        <div class="title">Magnification</div>
+        <input class="text input" type="text" id="magnification" value="1.0">
+        <div class="title">Center Point's Longitude</div>
+        <input class="text input" type="text" id="longitude" value="0.0">
+        <div class="title">Center Point's Latitude</div>
+        <input class="text input" type="text" id="latitude" value="0.0">
+        <div class="title">Vertical Gridsize</div>
+        <input class="text input" type="text" id="vgrid" value="0.0">
+        <div class="title">Horizontal Gridsize</div>
+        <input class="text input" type="text" id="hgrid" value="0.0">
+        <div class="title">Water Level</div>
+        <input class="text input" type="text" id="water" value="-0.02">
+        <div class="title">Light Source Longitude</div>
+        <input class="text input" type="text" id="lslongitude" value="0.0">
+        <div class="title">Light Source Latitude</div>
+        <input class="text input" type="text" id="lslatitude" value="0.0">
+        <div class="title">Distance Variation</div>
+        <input class="text input" type="text" id="dvariation" value="0.035">
+        <div class="title">Altitude Variation</div>
+        <input class="textinput" type="text" id="avariation" value="-0.45">
+        <div class="title">Longitude Rotation</div>
+        <input class="text input" type="text" id="longituder" value="0.0">
+        <div class="title">Latitude Rotation</div>
+        <input class="text input" type="text" id="latituder"  value="0.0">
       </form>
     </div>
 
     <div class="display" id="optionfields">
       <form>
         <div class = "checkbox">
-          <input type="checkbox" name="colorbyaltitude">
+          <input type="checkbox" class="checkbox input" id="colorbyaltitude">
           Color By Altitude
         </div>
         <div class = "checkbox">
-          <input type="checkbox" name="flattershores">
+          <input type="checkbox" class="checkbox input" id="flattershores">
           Flatter Shores
         </div>
         <div class = "checkbox">
-          <input type="checkbox" name="wrinklymap">
+          <input type="checkbox" class="checkbox input" id="wrinklymap">
           Wrinkly Map
         </div>
         <div class = "checkbox">
-          <input type="checkbox" name="daylightshading">
+          <input type="checkbox" class="checkbox input" id="daylightshading">
           Daylight Shading
         </div>
       </form>
 
       <div class="combobox title">Outline</div>
-      <select>
+      <select id="outline" class="combobox input">
         <option value="">-</option>
-        <option value="-E">Outline Landmasses</option>
-        <option value="-O">Only Show Outline</option>
+        <option value=" -E">Outline Landmasses</option>
+        <option value=" -O">Only Show Outline</option>
       </select>
 
       <div class="combobox title">Bumpmap</div>
-      <select>
+      <select id="bumpmap" class="combo input">
         <option value="">-</option>
-        <option value="-b">Land Only</option>
-        <option value="-B">Land and Water</option>
+        <option value=" -b">Land Only</option>
+        <option value=" -B">Land and Water</option>
       </select>
 
       <div class="combobox title">Projection</div>
-      <select>
+      <select id="projection" class="combo input">
         <option value="m">Mercator</option>
         <option value="p">Peters</option>
         <option value="q">Square</option>
@@ -121,16 +121,18 @@
       </select>
 
       <div class="button">
-        <button type="button">New Planet</button>
+        <button type="button" id="randomizemap">New Planet</button>
       </div>
       <div class="button">
-        <button type="button">Generate Planet</button>
+        <button type="button" id="showmap">Generate Planet</button>
       </div>
     </div>
 
     <div class="display" id="preview">
-      <img src="p.bmp" id="map" style="width: 100%">
+      <img id="map" style="width: 100%">
     </div>
 
   </body>
+
+  <script src="index.js"></script>
 </html>
