@@ -7,4 +7,4 @@ Currently requires the user to manually edit TPDir within index.js to specify th
 
 This project is still being developed on Windows, but I intend to take advantage of Electron's cross platform support once the base design is in place.
 
-![alt text](http://i.imgur.com/K3EY3yf.png)
+![alt text](http://i.imgur.com/UYuDLPH.png)
