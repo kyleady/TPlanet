@@ -11,6 +11,12 @@
       float: right;
       padding-left: 20px;
     }
+    #colorfields {
+      width: 200px;
+      float: right;
+      overflow: auto;
+      height: 100%;
+    }
     #preview {
       overflow: hidden;
     }
@@ -31,6 +37,12 @@
     }
     button {
       width: 100%;
+    }
+    .colorbox, .colorkiller {
+      width: 25px;
+    }
+    td {
+      border: 1px solid black;
     }
 
     </style>
@@ -71,6 +83,70 @@
       </form>
     </div>
 
+    <div id="colorfields">
+      <div class="color title">Color</div>
+      <select id="coloroptions" class="color input">
+        <option value="custom.col">Custom</option>
+      </select>
+
+      <div class="colorbar" id="landcolorbar">
+        <div class="colorbartitle title" align="center">
+          Land Colors
+        </div>
+        <table style="width:100%" id="landtable">
+          <tr id="landrow0">
+            <td>
+              100%
+            </td>
+            <td class="colorbox">
+            </td>
+            <td class="colorkiller">
+              <button type="button" class="colorbutton">X</button>
+            </td>
+          </tr>
+          <tr id="landrow10000">
+            <td>
+              0%
+            </td>
+            <td class="colorbox">
+            </td>
+            <td class="colorkiller">
+              <button type="button" class="colorbutton">X</button>
+            </td>
+          </tr>
+        </table>
+      </div>
+
+      <div class="colorbar" id="watercolorbar">
+        <div class="colorbartitle title" align="center">
+          Water Colors
+        </div>
+        <table style="width:100%" id="watertable">
+          <tr id="waterrow0">
+            <td>
+              100%
+            </td>
+            <td class="colorbox">
+            </td>
+            <td class="colorkiller">
+              <button type="button" class="colorbutton">X</button>
+            </td>
+          </tr>
+          <tr id="waterrow10000">
+            <td>
+              0%
+            </td>
+            <td class="colorbox">
+            </td>
+            <td class="colorkiller">
+              <button type="button" class="colorbutton">X</button>
+            </td>
+          </tr>
+        </table>
+      </div>
+
+    </div>
+
     <div class="display" id="optionfields">
       <form>
         <div class = "checkbox">
@@ -92,7 +168,7 @@
       </form>
 
       <div class="combobox title">Outline</div>
-      <select id="outline" class="combobox input">
+      <select id="outline" class="combo input">
         <option value="">-</option>
         <option value=" -E">Outline Landmasses</option>
         <option value=" -O">Only Show Outline</option>
@@ -121,10 +197,10 @@
       </select>
 
       <div class="button">
-        <button type="button" id="randomizemap">New Planet</button>
+        <button type="button" id="randomizemap">New</button>
       </div>
       <div class="button">
-        <button type="button" id="showmap">Generate Planet</button>
+        <button type="button" id="showmap">Detail</button>
       </div>
     </div>
 

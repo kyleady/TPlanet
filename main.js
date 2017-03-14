@@ -6,14 +6,16 @@ const BrowserWindow = electron.BrowserWindow
 
 const path = require('path')
 const url = require('url')
+const {ipcMain} = require('electron')
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
-let mainWindow
+let mainWindow = null
+let colorDialog = null
 
 function createWindow () {
   // Create the browser window.
-  mainWindow = new BrowserWindow({width: 800, height: 600})
+  mainWindow = new BrowserWindow()
 
   // and load the index.html of the app.
   mainWindow.loadURL(url.format({
@@ -22,6 +24,8 @@ function createWindow () {
     slashes: true
   }))
 
+  mainWindow.webContents.openDevTools();
+
   // Emitted when the window is closed.
   mainWindow.on('closed', function () {
     // Dereference the window object, usually you would store windows
@@ -29,6 +33,42 @@ function createWindow () {
     // when you should delete the corresponding element.
     mainWindow = null
   })
+
+  createColorDialog()
+  connectColorDialog()
+}
+
+function connectColorDialog(){
+  ipcMain.on('show-color-dialog', (e, arg) => {
+    colorDialog.show();
+  })
+  ipcMain.on('hide-color-dialog', (e, arg) => {
+    colorDialog.hide();
+  })
+  ipcMain.on('load-color-dialog', (e,arg) => {
+    if(!colorDialog){
+      createColorDialog();
+      colorDialog.once('ready-to-show', () => {
+        colorDialog.webContents.send('load-color-dialog', arg);
+      })
+    } else {
+      colorDialog.webContents.send('load-color-dialog', arg);
+    }
+  })
+  ipcMain.on('submit-color-dialog', (e, arg) => {
+    mainWindow.webContents.send('submit-color-dialog', arg);
+  })
+}
+
+function createColorDialog(){
+  colorDialog = new BrowserWindow({parent: mainWindow, modal: true, show: false, height: 375})
+  colorDialog.loadURL(url.format({
+    pathname: path.join(__dirname, 'colorPicker.html'),
+    protocol: 'file:',
+    slashes: true
+  }))
+  colorDialog.setMenu(null);
+  colorDialog.once('close',() => {colorDialog = null})
 }
 
 // This method will be called when Electron has finished

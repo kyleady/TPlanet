@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+  input {
+    width: 100%;
+  }
+  #colorreference {
+    width: 100%;
+    min-height: 50px;
+    background-color: black;
+  }
+  #colorpreview {
+    width: 100%;
+    min-height: 50px;
+    background-color: black;
+  }
+  .button {
+    margin-top: 25px;
+    margin-bottom: 25px;
+    margin-left: 50px;
+    margin-right: 50px;
+  }
+  .textinput {
+    width: 35px;
+  }
+  </style>
+  <meta charset="UTF-8">
+  <title>Pick a color</title>
+</head>
+<body>
+
+  <form>
+    <select id="sectioncombo">
+      <option value="land">Land</option>
+      <option value="water">Water</option>
+    </select>
+    @ <input class="textinput" id="index" type="text" value="0.0">
+    %
+    <br><br>
+    <div class="slider">
+      Red<input type="range" min=0 max=255 step=1 id="redslider">
+    </div>
+    <div class="slider">
+      Green<input type="range" min=0 max=255 step=1 id="greenslider">
+    </div>
+    <div class="slider">
+      Blue<input type="range" min=0 max=255 step=1 id="blueslider">
+    </div>
+    <div id="colorreference">
+    </div>
+    <div id="colorpreview">
+    </div>
+    <div class="button">
+      <button type="button" id="submitbutton">Add Color</button>
+    </div>
+  </form>
+</body>
+
+<script src="colorPicker.js"></script>
+</html>

@@ -26,7 +26,12 @@ function generateMap(isPreview){
     }
     console.log(`stdout: ${stdout}`);
     console.log(`stderr: ${stderr}`);
-    document.getElementById("map").src = TPDir + "\\GUIp.bmp?" + new Date().getTime();
+    if(isPreview){
+      document.getElementById("map").src = TPDir + "\\GUIpreview.bmp?" + new Date().getTime();
+    } else {
+      document.getElementById("map").src = TPDir + "\\GUIplanet.bmp?" + new Date().getTime();
+    }
+
     enableInputs();
   });
 }
@@ -52,7 +57,11 @@ function generateCMD(isPreview){
   }
 
   planetCMD += " -m " + document.getElementById("magnification").value;
-  planetCMD += " -o GUIp.bmp";
+  if(isPreview){
+    planetCMD += " -o GUIpreview.bmp";
+  } else {
+    planetCMD += " -o GUIplanet.bmp";
+  }
   planetCMD += " -l " + document.getElementById("longitude").value;
   planetCMD += " -L " + document.getElementById("latitude").value;
   planetCMD += " -g " + document.getElementById("vgrid").value;
@@ -68,7 +77,7 @@ function generateCMD(isPreview){
     planetCMD += " -S";
   }
 
-  //insert color file here
+  planetCMD += " -C " + document.getElementById("coloroptions").value;
   planetCMD += document.getElementById("outline").value;
   planetCMD += document.getElementById("bumpmap").value;
   if(document.getElementById("daylightshading").checked){
@@ -101,5 +110,7 @@ function disableInputs(disable){
     inputs[i].disabled = disable;
   }
 }
+
+exports.preview = generatePreview;
 
 generatePreview();
