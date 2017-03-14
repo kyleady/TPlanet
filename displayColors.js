@@ -19,22 +19,13 @@ function smoothColorList(colorlist){
 
 function data2ColorLists(data){
   var colors = data.match(/\D*(\d+)\D*(\d+)\D*(\d+)\D*(\d+)/g);
-  var maxIndex = Number(colors[colors.length-1].match(/\d+/)) - 6;
+  var maxIndex = ColorObj.scaleMaxIndex(colors[colors.length-1].match(/\d+/));
   var waterColors = [];
   var landColors = [];
   for(var i = 0, l = colors.length; i < l; i++){
-    var color = colors[i].match(/\D*(\d+)\D*(\d+)\D*(\d+)\D*(\d+)/);
-    var index = Number(color[1]);
-    if(index > 5){
-      index = index-6;
-      index = Math.round(index * 20001 / maxIndex);
-      var colorObj = {
-        index: index,
-        red:   color[2],
-        green: color[3],
-        blue:  color[4]
-      };
-      if(index <= 10000){
+    var colorObj = new ColorObj(colors[i], maxIndex);
+    if(colorObj.index >= 0){
+      if(colorObj.index <= 10000){
         waterColors.push(colorObj);
       } else {
         colorObj.index = colorObj.index - 10001;
@@ -68,12 +59,12 @@ function addColorRow(colorObj, table, section){
   row.id = section + "row" + colorObj.index;
 
   var indexCell = row.insertCell(0);
-  indexCell.innerHTML = colorObj.index/100 + "%";
+  indexCell.innerHTML = colorObj.toLabel();
   indexCell.addEventListener("click", customColors.openColorDialog);
 
   var colorCell = row.insertCell(1);
   colorCell.className = "colorbox";
-  colorCell.style["background-color"] = "rgb(" + colorObj.red + "," + colorObj.green + "," + colorObj.blue + ")";
+  colorCell.style["background-color"] = colorObj.toStyle();
   colorCell.addEventListener("click", customColors.openColorDialog);
 
   var removeCell = row.insertCell(2);
