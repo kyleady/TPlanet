@@ -9,7 +9,10 @@ const {ipcRenderer} = require('electron')
 //it is the directory of torbenm's planet generator on their local machine
 var TPDir = "";
 
+const ColorObj = require("./prototypes/colorObj.js");
+const ColorCode = require("./prototypes/colorCode.js");
+
 const generate = require("./generateMap.js");
-require("./colorFiles.js");
-const displayColors = require("./displayColors.js");
-const customColors = require("./customColors.js");
+require("./loadColorOptions.js");
+const displayColors = require("./displayColorLists.js");
+const customColors = require("./colorEditting.js");

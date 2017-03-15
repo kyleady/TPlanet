@@ -41,7 +41,7 @@ ipcRenderer.on('load-color-dialog', function(ev, args){
   colorreference.style["background-color"] = "rgb(" + redslider.value + "," + greenslider.value + "," + blueslider.value + ")";
   colorpreview.style["background-color"]   = "rgb(" + redslider.value + "," + greenslider.value + "," + blueslider.value + ")";
   sectioncombo.value                       = args.section;
-  index.value                              = args.index;
+  index.value                              = args.index / 100;
 
   ipcRenderer.send('show-color-dialog');
 });

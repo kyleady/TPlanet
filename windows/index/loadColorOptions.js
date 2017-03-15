@@ -1,16 +1,3 @@
-function removeColorOptions(combobox){
-  for (var i = 0, l = combobox.options.length; i < l; i++) {
-    combobox.options[i] = null;
-  }
-}
-
-function addColorOption(combobox, colorfile){
-  var coloroption = document.createElement("option");
-  coloroption.text = colorfile.replace(/\.col$/,"");
-  coloroption.value = colorfile;
-  combobox.add(coloroption);
-}
-
 function loadColorOptions(){
   var combobox = document.getElementById("coloroptions");
   removeColorOptions(combobox);
@@ -24,6 +11,19 @@ function loadColorOptions(){
       }
     }
   });
+}
+
+function removeColorOptions(combobox){
+  for (var i = 0, l = combobox.options.length; i < l; i++) {
+    combobox.options[i] = null;
+  }
+}
+
+function addColorOption(combobox, colorfile){
+  var coloroption = document.createElement("option");
+  coloroption.text = colorfile.replace(/\.col$/,"");
+  coloroption.value = colorfile;
+  combobox.add(coloroption);
 }
 
 loadColorOptions();
