@@ -19,7 +19,7 @@ function createWindow () {
 
   // and load the index.html of the app.
   mainWindow.loadURL(url.format({
-    pathname: path.join(__dirname, 'index.html'),
+    pathname: path.join(__dirname, 'windows/index/index.html'),
     protocol: 'file:',
     slashes: true
   }))
@@ -63,7 +63,7 @@ function connectColorDialog(){
 function createColorDialog(){
   colorDialog = new BrowserWindow({parent: mainWindow, modal: true, show: false, height: 375})
   colorDialog.loadURL(url.format({
-    pathname: path.join(__dirname, 'colorPicker.html'),
+    pathname: path.join(__dirname, 'windows/colorDialog/colorDialog.html'),
     protocol: 'file:',
     slashes: true
   }))

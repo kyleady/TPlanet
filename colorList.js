@@ -1,3 +1,0 @@
-function ColorList(){
-  this.colors = [];
-}
