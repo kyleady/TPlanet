@@ -24,7 +24,11 @@ ColorObj.prototype.fromData = function(data, maxIndex){
   if(!matches){
     return false;
   }
-  this.scaleIndex(matches[1], maxIndex);
+  if(maxIndex){
+    this.scaleIndex(matches[1], maxIndex);
+  } else {
+    this.index = Number(matches[1]);
+  }
   this.red   = Number(matches[2]);
   this.green = Number(matches[3]);
   this.blue  = Number(matches[4]);

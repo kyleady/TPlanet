@@ -2,41 +2,10 @@ function displayColorLists(){
   var colorfile = document.getElementById("coloroptions").value;
   fs.readFile(TPDir + "\\" + colorfile, 'utf8', function(err, data){
     if(err) console.log("err: " + err);
-    var colorLists = data2ColorLists(data);
-    displayColorList(smoothColorList(colorLists['water']),'water');
-    displayColorList(smoothColorList(colorLists['land']),'land');
+    var colorCode = new ColorCode(data);
+    displayColorList(colorCode.water,'water');
+    displayColorList(colorCode.land,'land');
   });
-}
-
-function smoothColorList(colorlist){
-  if(colorlist.length > 0){
-    colorlist[0].index = 0;
-    colorlist[colorlist.length-1].index = 10000;
-  }
-
-  return colorlist;
-}
-
-function data2ColorLists(data){
-  var colors = data.match(/\D*(\d+)\D*(\d+)\D*(\d+)\D*(\d+)/g);
-  var maxIndex = ColorObj.scaleMaxIndex(colors[colors.length-1].match(/\d+/));
-  var waterColors = [];
-  var landColors = [];
-  for(var i = 0, l = colors.length; i < l; i++){
-    var colorObj = new ColorObj(colors[i], maxIndex);
-    if(colorObj.index >= 0){
-      if(colorObj.index <= 10000){
-        waterColors.push(colorObj);
-      } else {
-        colorObj.index = colorObj.index - 10001;
-        landColors.push(colorObj);
-      }
-    }
-  }
-  return {
-    land: landColors,
-    water: waterColors
-  }
 }
 
 function displayColorList(colorlist, section){
@@ -57,16 +26,25 @@ function clearColorList(table){
 function addColorRow(colorObj, table, section){
   var row = table.insertRow(0);
   row.id = section + "row" + colorObj.index;
+  addIndexCell(row, colorObj);
+  addColorCell(row, colorObj);
+  addRemoveButton(row, colorObj);
+}
 
+function addIndexCell(row, colorObj){
   var indexCell = row.insertCell(0);
   indexCell.innerHTML = colorObj.toLabel();
   indexCell.addEventListener("click", customColors.openColorDialog);
+}
 
+function addColorCell(row, colorObj){
   var colorCell = row.insertCell(1);
   colorCell.className = "colorbox";
   colorCell.style["background-color"] = colorObj.toStyle();
   colorCell.addEventListener("click", customColors.openColorDialog);
+}
 
+function addRemoveButton(row, colorObj){
   var removeCell = row.insertCell(2);
   var removeButton = document.createElement("button");
   removeButton.innerHTML = "X";
