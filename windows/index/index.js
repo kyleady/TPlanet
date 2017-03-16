@@ -1,18 +1,19 @@
 'use strict';
 
 //initialize variables
-var fs = require('fs');
+var TPDir = "";
 var Seed = Math.random();
 var PreviewWidth = 200;
+
+var fs = require('fs');
 const {ipcRenderer} = require('electron')
-//this value needs to be set by the user
-//it is the directory of torbenm's planet generator on their local machine
-var TPDir = "";
+
 
 const ColorObj = require("./prototypes/colorObj.js");
 const ColorCode = require("./prototypes/colorCode.js");
 
 const generate = require("./generateMap.js");
-require("./loadColorOptions.js");
-const displayColors = require("./displayColorLists.js");
+const colorOptions = require("./loadColorOptions.js");
+const colorLists = require("./displayColorLists.js");
 const customColors = require("./colorEditting.js");
+const Preferences = require('./readWritePreferences.js');

@@ -26,4 +26,4 @@ function addColorOption(combobox, colorfile){
   combobox.add(coloroption);
 }
 
-loadColorOptions();
+exports.load = loadColorOptions;

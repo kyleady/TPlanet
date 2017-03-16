@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+  #outerbox {
+    border: 2px solid black;
+    padding: 25px;
+    margin: 25px;
+  }
+  #applybutton {
+    float: right;
+  }
+  </style>
+  <meta charset="UTF-8">
+  <title>Pick a color</title>
+</head>
+<body>
+  <form>
+    <div id="outerbox">
+      <div id="previewwidthtitle">
+        Preview Width
+      </div>
+      <div>
+        <input type="text" id="previewwidth" value="200">
+      </div>
+      <div id="workingdirtitle">
+        Working Directory
+      </div>
+      <div>
+        <input type="text" id="tpdir" value="">
+      </div>
+    </div>
+  </form>
+<button type="button" id="applybutton">Apply</button>
+
+</body>
+
+<script src="preferencesDialog.js"></script>
+</html>
