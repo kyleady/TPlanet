@@ -1,10 +1,44 @@
-const {Menu} = require('electron')
+const {Menu, dialog} = require('electron')
 const preferencesD = require('./preferencesWindow.js')
+const exec = require('child_process').exec;
 
 const template = [
   {
     label: 'File',
     submenu: [
+      {
+        label: 'Save Map',
+        accelerator: 'CmdOrCtrl+S',
+        click () {
+          var filename = dialog.showSaveDialog(fileDialog, {
+            title: "Save Map",
+            filters: [
+              {name: 'Images', extensions: ['bmp']}
+            ]
+          });
+          if(filename){
+            mainWindow.webContents.send("save-map", filename);
+          }
+        }
+      },
+      {
+        label: 'Save Color File',
+        accelerator: 'CmdOrCtrl+Shift+S',
+        click () {
+          var filename = dialog.showSaveDialog(fileDialog, {
+            title: "Save Color File",
+            filters: [
+              {name: 'Color Files', extensions: ['col']}
+            ]
+          });
+          if(filename){
+            mainWindow.webContents.send("save-color-file", filename);
+          }
+        }
+      },
+      {
+        type: 'separator'
+      },
       {
         label: 'Preferences',
         click () {

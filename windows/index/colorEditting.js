@@ -28,7 +28,7 @@ function saveColorLists(colorcode, colorfile){
       alert("An error ocurred creating the file: "+ err.message)
     }
     document.getElementById('coloroptions').value = colorfile;
-    displayColors.displayColorLists();
+    colorLists.show();
     generate.preview();
   });
 }
