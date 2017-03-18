@@ -89,21 +89,56 @@
         <option value="custom.col">Custom</option>
       </select>
 
+      <div class="colorbar" id="detailcolorbar">
+        <table style="width:100%" id="detailtable">
+          <tr id="backgroundrow">
+            <td>
+              Background
+            </td>
+            <td class="colorbox" id="backgroundpreview">
+            </td>
+            <td class="colorkiller">
+              <button type="button" class="colorbutton" disabled>X</button>
+            </td>
+          </tr>
+          <tr id="gridrow">
+            <td>
+              Grid
+            </td>
+            <td class="colorbox" id="gridpreview">
+            </td>
+            <td class="colorkiller">
+              <button type="button" class="colorbutton" disabled>X</button>
+            </td>
+          </tr>
+          <tr id="outlinerow">
+            <td>
+              Outline
+            </td>
+            <td class="colorbox" id="outlinepreview">
+            </td>
+            <td class="colorkiller">
+              <button type="button" class="colorbutton" disabled>X</button>
+            </td>
+          </tr>
+          <tr id="contourrow">
+            <td>
+              Contour
+            </td>
+            <td class="colorbox" id="contourpreview">
+            </td>
+            <td class="colorkiller">
+              <button type="button" class="colorbutton" disabled>X</button>
+            </td>
+          </tr>
+        </table>
+      </div>
+
       <div class="colorbar" id="landcolorbar">
         <div class="colorbartitle title" align="center">
           Land Colors
         </div>
         <table style="width:100%" id="landtable">
-          <tr id="landrow0">
-            <td>
-              100%
-            </td>
-            <td class="colorbox">
-            </td>
-            <td class="colorkiller">
-              <button type="button" class="colorbutton">X</button>
-            </td>
-          </tr>
           <tr id="landrow10000">
             <td>
               0%
@@ -125,16 +160,6 @@
           <tr id="waterrow0">
             <td>
               100%
-            </td>
-            <td class="colorbox">
-            </td>
-            <td class="colorkiller">
-              <button type="button" class="colorbutton">X</button>
-            </td>
-          </tr>
-          <tr id="waterrow10000">
-            <td>
-              0%
             </td>
             <td class="colorbox">
             </td>

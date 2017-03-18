@@ -16,6 +16,7 @@ function submitColor(){
   var redslider = document.getElementById("redslider");
   var greenslider = document.getElementById("greenslider");
   var blueslider = document.getElementById("blueslider");
+  var sectioncombo = document.getElementById("sectioncombo");
   var index = document.getElementById("index");
 
   output.red     = redslider.value;
@@ -25,6 +26,17 @@ function submitColor(){
   output.index  = Math.floor(Number(index.value)*100);
 
   ipcRenderer.send('submit-color-dialog', output);
+}
+
+function setIndexVisibility(ev){
+  var sectioncombo = document.getElementById("sectioncombo");
+  var atline = document.getElementById("atline");
+
+  if(sectioncombo.value == 'water' || sectioncombo.value == 'land'){
+    atline.style['visibility'] = "visible";
+  } else {
+    atline.style['visibility'] = "hidden";
+  }
 }
 
 ipcRenderer.on('load-color-dialog', function(ev, args){
@@ -43,11 +55,15 @@ ipcRenderer.on('load-color-dialog', function(ev, args){
   sectioncombo.value                       = args.section;
   index.value                              = args.index / 100;
 
+  setIndexVisibility();
+
   ipcRenderer.send('show-color-dialog');
 });
 
 document.getElementById("redslider").addEventListener("change", updateColorPreview);
 document.getElementById("greenslider").addEventListener("change", updateColorPreview);
 document.getElementById("blueslider").addEventListener("change", updateColorPreview);
+
+document.getElementById("sectioncombo").addEventListener("change", setIndexVisibility);
 
 document.getElementById("submitbutton").addEventListener("click", submitColor);

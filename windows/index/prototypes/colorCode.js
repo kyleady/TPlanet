@@ -36,7 +36,17 @@ ColorCode.prototype.fromData = function(data){
   //this.smoothLists();
 }
 
+ColorCode.prototype.correctIndexes = function(){
+  this.black.index      = 0;
+  this.white.index      = 1;
+  this.background.index = 2;
+  this.grid.index       = 3;
+  this.outline.index    = 4;
+  this.contour.index    = 5;
+}
+
 ColorCode.prototype.toData = function(){
+  this.correctIndexes();
   var output = "";
   output += this.black.toData();
   output += "\r\n";
@@ -72,20 +82,24 @@ ColorCode.prototype.smoothLists = function(){
 }
 
 ColorCode.prototype.addColor = function(colorObj, section){
-  var Inserted = false;
-  for(var i = 0, l = this[section].length; i < l; i++){
-    if(colorObj.index == this[section][i].index){
-      this[section][i] = colorObj;
-      Inserted = true;
-      break;
-    } else if(colorObj.index < this[section][i].index) {
-      this[section].splice(i, 0, colorObj);
-      Inserted = true;
-      break;
+  if(Array.isArray(this[section])){
+    var Inserted = false;
+    for(var i = 0, l = this[section].length; i < l; i++){
+      if(colorObj.index == this[section][i].index){
+        this[section][i] = colorObj;
+        Inserted = true;
+        break;
+      } else if(colorObj.index < this[section][i].index) {
+        this[section].splice(i, 0, colorObj);
+        Inserted = true;
+        break;
+      }
     }
-  }
-  if(!Inserted){
-    this[section].push(colorObj);
+    if(!Inserted){
+      this[section].push(colorObj);
+    }
+  } else {
+    this[section] = colorObj;
   }
 }
 

@@ -24,18 +24,26 @@
   .textinput {
     width: 35px;
   }
+  #sectioncombo {
+    float: left;
+  }
   </style>
   <meta charset="UTF-8">
   <title>Pick a color</title>
 </head>
 <body>
     <select id="sectioncombo">
+      <option value="background">Background</option>
+      <option value="grid">Grid</option>
+      <option value="outline">Outline</option>
+      <option value="contour">Contour</option>
       <option value="land">Land</option>
       <option value="water">Water</option>
     </select>
-    @ <input class="textinput" id="index" type="text" value="0.0">
-    %
-    <br><br>
+    <div id="atline">
+      @ <input class="textinput" id="index" type="text" value="0.0">%
+    </div>
+    <br>
     <div class="slider">
       Red<input type="range" min=0 max=255 step=1 id="redslider">
     </div>

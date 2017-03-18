@@ -3,6 +3,7 @@ function displayColorLists(){
   fs.readFile(TPDir + "\\" + colorfile, 'utf8', function(err, data){
     if(err) console.log("err: " + err);
     var colorCode = new ColorCode(data);
+    displayColorDetails(colorCode);
     displayColorList(colorCode.water,'water');
     displayColorList(colorCode.land,'land');
   });
@@ -13,6 +14,22 @@ function displayColorList(colorlist, section){
   clearColorList(table);
   for(var i = 0, l = colorlist.length; i < l; i++){
     addColorRow(colorlist[i], table, section);
+  }
+}
+
+function connectColorDetails(){
+  var details = ["background", "grid", "outline", "contour"];
+  for(var i = 0, l = details.length; i < l; i++){
+    var preview = document.getElementById(details[i] + "preview");
+    preview.addEventListener("click", customColors.openColorDialog);
+  }
+}
+
+function displayColorDetails(colorCode){
+  var details = ["background", "grid", "outline", "contour"];
+  for(var i = 0, l = details.length; i < l; i++){
+    var preview = document.getElementById(details[i] + "preview");
+    preview.style['background-color'] = colorCode[details[i]].toStyle();
   }
 }
 
@@ -62,3 +79,4 @@ function addRemoveButton(row, colorObj, section){
 document.getElementById("coloroptions").addEventListener("change", displayColorLists);
 
 exports.show = displayColorLists;
+exports.connectDetails = connectColorDetails;
