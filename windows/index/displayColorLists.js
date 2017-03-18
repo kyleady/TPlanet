@@ -28,7 +28,7 @@ function addColorRow(colorObj, table, section){
   row.id = section + "row" + colorObj.index;
   addIndexCell(row, colorObj);
   addColorCell(row, colorObj);
-  addRemoveButton(row, colorObj);
+  addRemoveButton(row, colorObj, section);
 }
 
 function addIndexCell(row, colorObj){
@@ -44,13 +44,14 @@ function addColorCell(row, colorObj){
   colorCell.addEventListener("click", customColors.openColorDialog);
 }
 
-function addRemoveButton(row, colorObj){
+function addRemoveButton(row, colorObj, section){
   var removeCell = row.insertCell(2);
   var removeButton = document.createElement("button");
   removeButton.innerHTML = "X";
   removeButton.type = "button";
   removeButton.className = "colorButton";
-  if(colorObj.index == 10000 || colorObj.index == 0){
+  if((colorObj.index == 10000 && section == 'land') ||
+     (colorObj.index == 0 && section == 'water')){
     removeButton.disabled = true;
   }
   removeButton.addEventListener("click", customColors.removeClicked);
@@ -59,6 +60,5 @@ function addRemoveButton(row, colorObj){
 }
 
 document.getElementById("coloroptions").addEventListener("change", displayColorLists);
-displayColorLists();
 
-exports.displayColorLists = displayColorLists;
+exports.show = displayColorLists;

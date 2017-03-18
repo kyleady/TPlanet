@@ -67,7 +67,7 @@ function generateCMD(isPreview){
   planetCMD += " -g " + document.getElementById("vgrid").value;
   planetCMD += " -G " + document.getElementById("hgrid").value;
   planetCMD += " -i " + document.getElementById("water").value;
-  if(document.getElementById("colorbyaltitude").checked){
+  if(document.getElementById("colorbylatitude").checked){
     planetCMD += " -c";
   }
   if(document.getElementById("flattershores").checked){
@@ -112,5 +112,3 @@ function disableInputs(disable){
 }
 
 exports.preview = generatePreview;
-
-generatePreview();

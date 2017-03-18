@@ -32,7 +32,8 @@ ColorCode.prototype.fromData = function(data){
       this.land.push(colorObj);
     }
   }
-  this.smoothLists();
+  //optional
+  //this.smoothLists();
 }
 
 ColorCode.prototype.toData = function(){
