@@ -35,7 +35,7 @@ function ensureCustomExists(){
 
 function removeColorOptions(combobox){
   for (var i = 0, l = combobox.options.length; i < l; i++) {
-    combobox.options[i] = null;
+    combobox.remove(0);
   }
 }
 

@@ -5,7 +5,7 @@ const url = require('url')
 const {ipcMain} = require('electron')
 
 function createColorDialog(){
-  colorDialog = new BrowserWindow({parent: mainWindow, modal: true, show: false, height: 375})
+  colorDialog = new BrowserWindow({parent: mainWindow, modal: true, show: false, height: 400})
   colorDialog.loadURL(url.format({
     pathname: path.join(__dirname, 'windows/colorDialog/colorDialog.html'),
     protocol: 'file:',

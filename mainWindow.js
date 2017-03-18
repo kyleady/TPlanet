@@ -6,7 +6,7 @@ const {ipcMain} = require('electron')
 
 function createMainWindow () {
   // Create the browser window.
-  mainWindow = new BrowserWindow()
+  mainWindow = new BrowserWindow({width: 750, height: 750})
 
   // and load the index.html of the app.
   mainWindow.loadURL(url.format({
@@ -15,7 +15,7 @@ function createMainWindow () {
     slashes: true
   }))
 
-  mainWindow.webContents.openDevTools();
+  mainWindow.maximize();
 
   // Emitted when the window is closed.
   mainWindow.on('closed', function () {

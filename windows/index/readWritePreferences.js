@@ -25,8 +25,9 @@ function writePreferences(){
   }
   fs.writeFile(path.join(__dirname, 'preferences.json'), JSON.stringify(preferences), function (err) {
     if(err){
-      alert("An error ocurred while saving to preferences.json: "+ err.message)
+      alert("An error ocurred while saving to preferences.json: " + err.message)
     }
+    generate.preview();
   });
 }
 

@@ -12,7 +12,6 @@ function createPreferencesDialog(){
     slashes: true
   }))
   preferencesDialog.setMenu(null);
-  preferencesDialog.webContents.openDevTools();
   preferencesDialog.once('close',() => {preferencesDialog = null})
 }
 

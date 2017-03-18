@@ -41,6 +41,7 @@ const template = [
       },
       {
         label: 'Preferences',
+        accelerator: 'CmdOrCtrl+P',
         click () {
           mainWindow.webContents.send('load-preferences-dialog');
         }
