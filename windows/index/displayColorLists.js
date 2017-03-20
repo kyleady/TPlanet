@@ -7,6 +7,12 @@ function displayColorLists(){
     displayColorList(colorCode.water,'water');
     displayColorList(colorCode.land,'land');
   });
+  var colorfilekiller = document.getElementById("colorfilekiller");
+  if(colorfile == "custom.col"){
+    colorfilekiller.disabled = true;
+  } else {
+    colorfilekiller.disabled = false;
+  }
 }
 
 function displayColorList(colorlist, section){
