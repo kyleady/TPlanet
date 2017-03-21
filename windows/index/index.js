@@ -5,7 +5,7 @@ var TPDir = "";
 var Seed = Math.random();
 var PreviewWidth = 200;
 
-var fs = require('fs');
+var fs = require('fs.extra');
 const {ipcRenderer} = require('electron')
 
 

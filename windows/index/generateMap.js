@@ -1,4 +1,5 @@
 const {ipcRenderer} = require('electron');
+const path = require('path')
 
 document.getElementById("showmap").onclick = function() {
   generateMap();
@@ -43,7 +44,7 @@ function generateCMD(isPreview){
   var planetCMD = "";
 
   if(!/^win/.test(process.platform)){
-    platform += "./";
+    planetCMD += "./";
   }
   planetCMD += "planet";
 
