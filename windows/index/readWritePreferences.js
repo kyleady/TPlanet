@@ -43,6 +43,7 @@ ipcRenderer.on('return-tpdir', function(ev, filePath){
   generate.preview();
   colorOptions.load();
   colorLists.show();
+  colorLists.connectDetails();
 });
 
 ipcRenderer.on('load-preferences-dialog', function(ev, args){
@@ -67,6 +68,7 @@ if(TPDir == ""){
   generate.preview();
   colorOptions.load();
   colorLists.show();
+  colorLists.connectDetails();
 }
 
 exports.read = readPreferences;

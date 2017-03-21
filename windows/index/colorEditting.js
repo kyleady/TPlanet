@@ -49,7 +49,7 @@ function openColorDialog(ev){
   var row = ev.currentTarget.parentNode;
   var label = row.cells[0].innerHTML;
   var style = row.cells[1].style['background-color'];
-  var matches = row.id.match(/^(land|water)/);
+  var matches = row.id.match(/^(\w+)row(\d*)$/);
 
   var colorObj = new ColorObj(style, label);
   colorObj.section = matches[1];

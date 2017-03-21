@@ -17,4 +17,27 @@ ipcMain.on('show-file-dialog', function(ev, args){
   }
 });
 
+ipcMain.on('delete-color-file', function(ev, filename){
+  dialog.showMessageBox(fileDialog, {
+    type: "warning",
+    buttons: ["yes", "no"],
+    title: "Warning!",
+    message: "Are you sure you want to delete " + filename + "?"
+  }, function(response){
+    if(response == 0){
+      mainWindow.webContents.send('delete-color-file');
+    }
+  });
+});
+
+ipcMain.on('show-error-dialog', function(ev, args){
+  console.log('test')
+  dialog.showMessageBox(fileDialog, {
+    type: "error",
+    buttons: ["Ok"],
+    title: "Error",
+    message: args
+  });
+});
+
 exports.create = createFileDialog;
