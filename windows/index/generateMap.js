@@ -31,9 +31,9 @@ function generateMap(isPreview){
     console.log(`stdout: ${stdout}`);
     console.log(`stderr: ${stderr}`);
     if(isPreview){
-      document.getElementById("map").src = TPDir + "\\GUIpreview.bmp?" + new Date().getTime();
+      document.getElementById("map").src = path.join(TPDir,"GUIpreview.bmp?") + new Date().getTime();
     } else {
-      document.getElementById("map").src = TPDir + "\\GUIplanet.bmp?" + new Date().getTime();
+      document.getElementById("map").src = path.join(TPDir, "GUIplanet.bmp?") + new Date().getTime();
     }
     enableInputs();
   });

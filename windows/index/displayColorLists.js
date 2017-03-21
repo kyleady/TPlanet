@@ -1,6 +1,8 @@
+const path = require('path')
+
 function displayColorLists(){
   var colorfile = document.getElementById("coloroptions").value;
-  fs.readFile(TPDir + "\\" + colorfile, 'utf8', function(err, data){
+  fs.readFile(path.join(TPDir,colorfile), 'utf8', function(err, data){
     if(err) console.log("err: " + err);
     var colorCode = new ColorCode(data);
     displayColorDetails(colorCode);

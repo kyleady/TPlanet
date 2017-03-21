@@ -1,3 +1,5 @@
+const path = require('path')
+
 function getColorCode(){
   var colorCode = new ColorCode();
   colorCode['water'] = getColorList('water');
@@ -23,7 +25,7 @@ function getColorList(section){
 
 function saveColorLists(colorcode, colorfile){
   colorfile = colorfile || 'custom.col';
-  fs.writeFile(TPDir + "\\" + colorfile, colorcode.toData(), function (err) {
+  fs.writeFile(path.join(TPDir, colorfile), colorcode.toData(), function (err) {
     if(err){
       alert("An error ocurred creating the file: "+ err.message)
     }
