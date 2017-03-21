@@ -30,4 +30,14 @@ ipcMain.on('delete-color-file', function(ev, filename){
   });
 });
 
+ipcMain.on('show-error-dialog', function(ev, args){
+  console.log('test')
+  dialog.showMessageBox(fileDialog, {
+    type: "error",
+    buttons: ["Ok"],
+    title: "Error",
+    message: args
+  });
+});
+
 exports.create = createFileDialog;

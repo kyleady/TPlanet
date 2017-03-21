@@ -1,3 +1,5 @@
+const {ipcRenderer} = require('electron');
+
 document.getElementById("showmap").onclick = function() {
   generateMap();
 };
@@ -22,6 +24,8 @@ function generateMap(isPreview){
   exec( generateCMD(isPreview) ,{cwd: TPDir} , (error, stdout, stderr) => {
     if (error) {
       console.error(`exec error: ${error}`);
+      ipcRenderer.send('show-error-dialog', `${error}`);
+      enableInputs();
       return;
     }
     console.log(`stdout: ${stdout}`);
@@ -31,13 +35,17 @@ function generateMap(isPreview){
     } else {
       document.getElementById("map").src = TPDir + "\\GUIplanet.bmp?" + new Date().getTime();
     }
-
     enableInputs();
   });
 }
 
 function generateCMD(isPreview){
-  var planetCMD = "planet";
+  var planetCMD = "";
+
+  if(!/^win/.test(process.platform)){
+    platform += "./";
+  }
+  planetCMD += "planet";
 
   planetCMD += " -s " + Seed;
 
