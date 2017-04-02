@@ -32,7 +32,7 @@ function generateMap(isPreview){
     console.log(`stdout: ${stdout}`);
     console.log(`stderr: ${stderr}`);
     if(isPreview){
-      document.getElementById("map").src = path.join(TPDir,"GUIpreview.bmp?") + new Date().getTime();
+      document.getElementById("map").src = path.join(TPDir,"GUIplanet.bmp?") + new Date().getTime();
     } else {
       document.getElementById("map").src = path.join(TPDir, "GUIplanet.bmp?") + new Date().getTime();
     }
@@ -66,11 +66,7 @@ function generateCMD(isPreview){
   }
 
   planetCMD += " -m " + document.getElementById("magnification").value;
-  if(isPreview){
-    planetCMD += " -o GUIpreview.bmp";
-  } else {
-    planetCMD += " -o GUIplanet.bmp";
-  }
+  planetCMD += " -o GUIplanet.bmp";
   planetCMD += " -l " + document.getElementById("longitude").value;
   planetCMD += " -L " + document.getElementById("latitude").value;
   planetCMD += " -g " + document.getElementById("vgrid").value;
